@@ -1,0 +1,189 @@
+% ----------------------------------------------------------
+% Setup and formatting
+% ----------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,enumitem,graphicx}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\setlength\parindent{0pt}
+ \setlength{\parskip}{0.7em}
+ 
+\begin{document}
+ 
+% ----------------------------------------------------------
+%                         Start here
+% ----------------------------------------------------------
+ 
+ 
+\title{Intermediate Counting and Probability: Chapter 1}
+\author{Prakhar Bhandari} 
+ 
+\maketitle
+ 
+% PROBLEM 1.1
+\begin{exercise}{1.1}
+My city is running a lottery. In the lottery, 25 balls numbered 1 through 25 are placed in a bin. Four balls are drawn one at a time and their numbers are recorded. The winning combination consists of the four selected numbers in the order they are selected. How many winning combinations are there, if:
+\begin{enumerate}[label=(\alph*)]
+\item each ball is discarded after it is removed?
+
+\textbf{Answer}: $25 \times 24 \times 23 \times 22 = \boxed{303,600}$ 
+\item each ball is replaced in the bin after it is removed and before the next ball is drawn?
+
+\textbf{Answer}: $25 \times 25 \times 25 \times 25 = 25^4 = \boxed{390,625}$ 
+\end{enumerate}
+\end{exercise}
+ 
+ 
+
+% PROBLEM 1.2
+\begin{exercise}{1.2}
+On the island of Mumble, the Mumblian alphabet has only 5 letters, and every word in the Mumblian language has no more than 3 letters in it. How many ords are possible? (A word can use a letter more than once, but 0 letters does not count as a word.)
+
+\textbf{{Answer}}: We can split up this problem into cases. 
+
+\textit{Case 1}: Word length of one. In this case, there are only 5 options.
+
+\textit{Case 2}: Word length of two. In this case, there are $5 \times 5 = 25$ options.
+
+\textit{Case 3}: Word length of three. In this case, there are $5 \times 5 \times 5 = 125$ options.
+
+Total options = $5 + 25 + 125 = \boxed{155}$
+\end{exercise}
+
+
+
+% PROBLEM 1.3
+\begin{exercise}{1.3}
+The Smith family has 4 sons and 3 daughters. In how many ways can they be seated in a row of 7 chairs, such that at least 2 boys are next to each other?
+
+\textbf{Answer}: If we did not have the condition that at least 2 boys must be next to each other, the solution would be $7!$. 
+
+However, we must eliminate the cases in which this is not true. This can only happen in one ordering, BGBGBGB. 
+
+There are $4 \times 3 \times 3 \times 2 \times 2 \times 1 \times 1 = 4! \times 3! = 144$ ways this can happen (4! orderings for the boys, 3! orderings for the girls).
+
+Hence, we have a total of $7! - 144 = \boxed{4896}$ orderings.
+
+\end{exercise}
+
+
+
+% PROBLEM 1.4
+\begin{exercise}{1.4}
+How many 3-digit numbers have exactly one zero?
+
+\textbf{Answer}: The zero cannot be the first digit, otherwise we would be dealing with a two digit number. So, there are 9 (digits 1 through 9) choices for the first digit.
+
+Now, we have two choices to put the one zero digit. It can either be the second digit or the third digit. In both cases, we would be left with 9 choices (digits 1 through 9) for the remaining digit.
+
+\textit{Case 1}: Second digit
+This gives us a total of $9 \times 1 \times 9 = 81$ numbers
+
+\textit{Case 2}: Third digit
+This gives us a total of $9 \times 1 \times 9 = 81$ numbers
+
+Hence, we have a total of $81 + 81 = \boxed{162}$ orderings.
+
+\end{exercise}
+
+
+
+% PROBLEM 1.5
+\begin{exercise}{1.5}
+Our math club has 20 members and 3 officers: President, Vice President, and Treasurer. However, one member, Ali, hates another member, Brenda. In how many ways can we fill the offices if Ali refuses to serve as an officer if Brenda is also an officer?
+
+\textbf{Answer}: The easiest way to solve this problem is to use complementary counting. If we did not have the condition about Ali and Brenda, there would be $20 \times 19 \ times 18 = 6840$ ways. 
+
+However, we must eliminate the ways that violate our condition, namely the cases with both Ali and Brenda in office. 
+
+If Ali and Brenda are in office, there are 18 options for the third person. Now, between the three of them, there are $3 \times 2 \times 1 = 6$ ways they can arrange the 3 office positions among themselves. This gives us a total of $18 \times 6 = 108$ violating arrangements.
+
+Hence, we have a total of $6840 - 108 = \boxed{6732}$ ways.
+
+\end{exercise}
+
+% PROBLEM 1.6
+\begin{exercise}{1.6}
+How many possible distinct arrangements are there of the letters in the word BALL?
+
+\textbf{Answer}: There are 4! = 24 permutations of the 4 letters in the word BALL, but in each of those permutations, the two L letters are identical, meaning $BL_1AL_2$ is the same as $BL_2AL_1$. 
+
+Hence, we can divide this number of permutations by 2 to get the number of distinct arrangements, giving us a total of $\frac{24}{2} = \boxed{12}$ arrangements.
+
+\end{exercise}
+
+
+
+% PROBLEM 1.7
+\begin{exercise}{1.7}
+In how many different ways can 6 people be seated at a round table? Two seating arrangements are considered the same if, for each person, the person to his or her left is the same in both arrangements.
+
+\textbf{Answer}: For a straight line, there are 6! different ways for these 6 people to be arranged. 
+
+However, some of these arrangements are duplicates. For example, ABCDEF and BCDEFA are different arrangements for straight lines, but are the same arrangement for a circle, where F is to the left of A and A is to the right of F. 
+
+Without loss of generality, for any circular arrangement of $A \leftrightarrow B \leftrightarrow C \leftrightarrow D \leftrightarrow E \leftrightarrow F \leftrightarrow$ (back to A), we can make six corresponding linear arrangements:
+\begin{enumerate}[label=(\arabic*)]
+\item ABCDEF
+\item BCDEFA
+\item CDEFAB
+\item DEFABC
+\item EFABCD
+\item FABCDE
+\end{enumerate}
+
+Hence, to go from linear to circular arrangements for this problem, we can divide 6! by 6 to get $\frac{6!}{6} = \boxed{120}$ arrangements.
+
+\end{exercise}
+
+
+
+% PROBLEM 1.8
+\begin{exercise}{1.8}
+ Consider a club that has n people. What is the number of ways to form an r person committee from the total of n people?
+
+\textbf{Answer}: Since there are no further distinctions beyond committee, the answer is simply n choose r, or $\binom{n}{r} = \boxed{\frac{n!}{(r)!(n-r)!}}$ orderings.
+
+\end{exercise}
+
+
+
+% PROBLEM 1.9
+\begin{exercise}{1.9}
+Each block on the grid shown below is 1 unit by 1 unit.
+Suppose we wish to walk from ,4 to B via a 7 unit path, but we have to stay on the grid-no cutting across blocks. How many different paths can we take?
+
+\includegraphics[scale=1]{chapter1-9.png}
+
+\textbf{Answer}: Since we know that every path must be 7 units, the only possible directions we can go are up and right. Furthermore, we must go up exactly three times and right exactly four times.
+
+With this information, we can formulate the problem in a different way. Let the letter R represent going right and the letter U represent going up. 
+
+Then, this problem can be reduced to finding the number of distinct permutations of the letters RRRRUUU.
+
+The number of permutations of these 7 letters is 7!. However, we have duplicates.
+
+For example, $U_1U_2U_3RRRR$ is the same is $U_1U_3U_2RRRR$. With the three U letters, we have $3 \times 2 \times 1 = 3!$ ways of arranging the three U letters. 
+
+Similarly, there are 4! ways of arranging the four R letters.
+
+
+Hence, after dividing by the duplicates, we have a total of $\frac{7!}{(3!)(4!)} = \boxed{35}$ paths.
+
+\end{exercise}
+
+
+
+
+% ----------------------------------------------------------
+%     Document end
+% ----------------------------------------------------------
+ 
+\end{document}
